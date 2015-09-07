@@ -1,10 +1,14 @@
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
+  Session.setDefault('at', moment().format());
 
   Template.hello.helpers({
     counter: function () {
       return Session.get('counter');
+    },
+    at: function () {
+      return Session.get('at');
     }
   });
 
@@ -12,6 +16,7 @@ if (Meteor.isClient) {
     'click button': function () {
       // increment the counter when button is clicked
       Session.set('counter', Session.get('counter') + 1);
+      Session.set('at', moment().format());
     }
   });
 }
